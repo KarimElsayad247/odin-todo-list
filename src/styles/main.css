@@ -1,5 +1,8 @@
 :root {
-    --green: #07d13d
+    --green: #07d13d;
+    --red: #dc4d3d;
+    --text-color: #202020;
+    font-size: 14px;
 }
 
 * {
@@ -9,6 +12,7 @@
 
 body, button, input {
     font-family: Roboto, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
 }
 
 body {
@@ -19,11 +23,11 @@ body {
 }
 
 header {
-    background-color: #dc4d3d;
+    background-color: var(--red);
     color: white;
     grid-column: 1 / -1;
     grid-row: 1 / 2;
-    padding: 0.2rem 1.5rem;
+    padding: 0.6rem 1.5rem;
 }
 
 .sidebar {
@@ -35,6 +39,7 @@ header {
 
 .sidebar-header-title {
     vertical-align: middle;
+    font-size: 1rem;
     font-weight: 400;
 }
 
@@ -59,13 +64,34 @@ header {
     background-color: #fafafa;
     color: var(--green);
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 300;
     
-    transition: all 0.1s ease;
+    
     cursor: pointer;
 }
 
 #add-project-button:hover {
     background-color: var(--green);
+    color: white;
+}
+
+#projects-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project {
+    font-size: 1rem;
+    padding: 7px;
+    border-radius: 3px;
+    background-color: #eeeeee;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.project:hover, .project.active {
+    background-color: var(--red);
     color: white;
 }
