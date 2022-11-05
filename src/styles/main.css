@@ -1,13 +1,20 @@
+:root {
+    --green: #07d13d
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
+body, button, input {
+    font-family: Roboto, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-rows: min-content auto;
 }
 
@@ -23,4 +30,42 @@ header {
     background-color: #fafafa;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    padding: 1rem 0.5rem;
+}
+
+.sidebar-header-title {
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+#sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#add-project-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    aspect-ratio: 1 / 1;
+    height: 1.5rem;
+    min-width: 1.5rem;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    padding: 0.5rem;
+
+    background-color: #fafafa;
+    color: var(--green);
+    font-size: 1.5rem;
+    font-weight: 400;
+    
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+#add-project-button:hover {
+    background-color: var(--green);
+    color: white;
 }
