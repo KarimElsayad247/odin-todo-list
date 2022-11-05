@@ -1,3 +1,9 @@
+import Sidebar from './modules/Sidebar';
+import Main from './modules/Main';
+
 import './styles/main.css'
 
-console.log("Hello world");
+let body = document.querySelector('body');
+
+body.appendChild(Sidebar());
+body.appendChild(Main());
