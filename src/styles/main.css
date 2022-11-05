@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: min-content auto;
+}
+
+header {
+    background-color: #dc4d3d;
+    color: white;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+
+.sidebar {
+    background-color: #fafafa;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
