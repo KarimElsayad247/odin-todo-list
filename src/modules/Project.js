@@ -8,10 +8,12 @@ export default function() {
 
     const addTodoItem = () => {
         todoItems.push(TodoItem());
+        switchToProject();
     }
 
     const getTodoItemsList = () => {
         const itemsList = document.createElement('ul');
+        itemsList.id = 'items-list';
         const itemElems = todoItems.map(item => item.itemDom());
         itemsList.replaceChildren(...itemElems);
         return itemsList;

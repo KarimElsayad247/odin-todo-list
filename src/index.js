@@ -5,5 +5,9 @@ import './styles/main.css'
 
 let body = document.querySelector('body');
 
-body.appendChild(Sidebar());
+const [sidebarDom, debug] = Sidebar();
+
+body.appendChild(sidebarDom());
 body.appendChild(Main());
+
+debug();

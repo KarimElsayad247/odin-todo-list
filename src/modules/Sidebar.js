@@ -1,7 +1,7 @@
 import Project from './Project.js'
 
 export default function() {
-    let projects = []
+    let projects = [Project()]
     
     function addNewProject() {
         const project = Project();
@@ -29,23 +29,32 @@ export default function() {
         return sidebarHeaderTitle;
     }
 
-    let sidebar = document.createElement('section');
-    sidebar.classList.add('sidebar');
- 
-    const sidebarHeader = document.createElement('div');
-    sidebarHeader.id = 'sidebar-header'
-
-    const sidebarHeaderTitle = SidebarHeaderTitle();
-    const createProjectButton = CreateProjectButton();
-
-    sidebarHeader.appendChild(sidebarHeaderTitle);
-    sidebarHeader.appendChild(createProjectButton);
+    const SidebarDom = () => {
+        const sidebar = document.createElement('section');
+        sidebar.classList.add('sidebar');
+     
+        const sidebarHeader = document.createElement('div');
+        sidebarHeader.id = 'sidebar-header'
     
-    const projectsList = document.createElement('ul');
-    projectsList.id = 'projects-list'
+        const sidebarHeaderTitle = SidebarHeaderTitle();
+        const createProjectButton = CreateProjectButton();
+    
+        sidebarHeader.appendChild(sidebarHeaderTitle);
+        sidebarHeader.appendChild(createProjectButton);
+        
+        const projectsList = document.createElement('ul');
+        projectsList.id = 'projects-list'
+    
+        sidebar.appendChild(sidebarHeader);
+        sidebar.appendChild(projectsList);
 
-    sidebar.appendChild(sidebarHeader);
-    sidebar.appendChild(projectsList);
+        return sidebar;
+    }
 
-    return sidebar;
+    const debug = () => {
+        refreshProjects();
+        projects[0].click();
+    }
+
+    return [SidebarDom, debug];
 }
