@@ -4,6 +4,8 @@
     --transparent-red: #dc4d3d68;
     --light-gray: #fafafa;
     --dark-gray: #eeeeee;
+    --main-color: var(--red);
+    --main-transparent-color: var(--transparent-red);
     --text-color: #202020;
     font-size: 14px;
 }
@@ -26,7 +28,7 @@ body {
 }
 
 header {
-    background-color: var(--red);
+    background-color: var(--main-color);
     color: white;
     grid-column: 1 / -1;
     grid-row: 1 / 2;
@@ -96,11 +98,11 @@ header {
 }
 
 .project:hover {
-    background-color: var(--transparent-red);
+    background-color: var(--main-transparent-color);
 }
 
 .project.active {
-    background-color: var(--red);
+    background-color: var(--main-color);
     color: white;
 }
 
@@ -124,7 +126,7 @@ header {
 .todo-item {
     list-style-type: none;
     min-width: 80%;
-    border: 1px solid var(--dark-gray);
+    border: 1px solid #ccc;
     border-radius: 3px;
     padding: 0.3rem 0.6em;
 }

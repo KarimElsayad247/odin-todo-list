@@ -2,13 +2,14 @@ import TodoItem from "./TodoItem";
 
 export default function() {
     
-    let title = "New project";
+    let projectTitle = "New Project";
+    let isProjectActive = false;
 
     let todoItems = [TodoItem(), TodoItem(), TodoItem()];
 
     const addTodoItem = () => {
         todoItems.push(TodoItem());
-        switchToProject();
+        displayProject();
     }
 
     const getTodoItemsList = () => {
@@ -40,7 +41,7 @@ export default function() {
         div.addEventListener('click', replaceWithChangeTitleForm);
 
         const titleElement = document.createElement('h2');
-        titleElement.textContent = title;
+        titleElement.textContent = projectTitle;
         
         div.replaceChildren(titleElement);
         return div;
@@ -67,5 +68,16 @@ export default function() {
         mainArea.replaceChildren(...content); 
     }
 
-    return {title, displayProject};
+    return {
+        get title() {
+            return projectTitle;
+        },
+        get active() {
+            return isProjectActive;
+        },
+        set active(isActive) {
+            isProjectActive = isActive;
+        }, 
+        displayProject,
+    };
 }

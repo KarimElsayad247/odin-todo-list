@@ -6,13 +6,18 @@ export default function() {
     const addNewProject = () => {
         const project = Project();
         projects.push(project);
-        refreshProjects();
+        refreshProjectsList();
     }
     
     const ProjectSidebarEntry = (project, i) => {
         const projectEntry = document.createElement('li');
         projectEntry.textContent = project.title;
         projectEntry.classList.add('project');
+
+        if (project.active) {
+            projectEntry.classList.add('active');
+        }
+
         projectEntry.tabIndex = 0;
         projectEntry.dataset.index = i;
         projectEntry.addEventListener('click', switchToProject);
@@ -20,16 +25,20 @@ export default function() {
     }
 
     const switchToProject = (event) => {
-        const projectsList = document.querySelector('#projects-list');
-        for (const project of projectsList.children) {
-            project.classList.remove('active');
+        for (const project of projects) {
+            project.active = false;
         }
-        event.target.classList.add('active');
         const projectIndex = event.target.dataset.index;
-        projects[projectIndex].displayProject();
+        activateProject(projectIndex);
     }
 
-    function refreshProjects() {
+    const activateProject = (projectIndex) => {
+        projects[projectIndex].active = true;
+        projects[projectIndex].displayProject();
+        refreshProjectsList();
+    }
+
+    function refreshProjectsList() {
         const projectsList = document.querySelector('#projects-list');
         const projectElems = projects.map(
             (project, i) => ProjectSidebarEntry(project, i)
@@ -75,9 +84,8 @@ export default function() {
     }
 
     const debug = () => {
-        refreshProjects();
-        document.querySelector('#projects-list')
-                .firstChild.click();
+        refreshProjectsList();
+        activateProject(0);
     }
 
     return [SidebarDom, debug];
