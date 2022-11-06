@@ -61,16 +61,11 @@ export default function() {
         return dom;
     }
 
-    const switchToProject = () => {
+    const displayProject = () => {
         const mainArea = document.querySelector('#main-area');
         const content = ProjectDom();
         mainArea.replaceChildren(...content); 
     }
 
-    const project = document.createElement('li');
-    project.textContent = title;
-    project.classList.add('project');
-    project.tabIndex = 0;
-    project.addEventListener('click', switchToProject);
-    return project;
+    return {title, displayProject};
 }

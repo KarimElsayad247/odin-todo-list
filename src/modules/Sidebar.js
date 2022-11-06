@@ -3,15 +3,38 @@ import Project from './Project.js'
 export default function() {
     let projects = [Project()]
     
-    function addNewProject() {
+    const addNewProject = () => {
         const project = Project();
         projects.push(project);
         refreshProjects();
     }
     
+    const ProjectSidebarEntry = (project, i) => {
+        const projectEntry = document.createElement('li');
+        projectEntry.textContent = project.title;
+        projectEntry.classList.add('project');
+        projectEntry.tabIndex = 0;
+        projectEntry.dataset.index = i;
+        projectEntry.addEventListener('click', switchToProject);
+        return projectEntry;
+    }
+
+    const switchToProject = (event) => {
+        const projectsList = document.querySelector('#projects-list');
+        for (const project of projectsList.children) {
+            project.classList.remove('active');
+        }
+        event.target.classList.add('active');
+        const projectIndex = event.target.dataset.index;
+        projects[projectIndex].displayProject();
+    }
+
     function refreshProjects() {
         const projectsList = document.querySelector('#projects-list');
-        projectsList.replaceChildren(...projects)
+        const projectElems = projects.map(
+            (project, i) => ProjectSidebarEntry(project, i)
+        );
+        projectsList.replaceChildren(...projectElems);
     }
     
     const CreateProjectButton = () => {
@@ -53,7 +76,8 @@ export default function() {
 
     const debug = () => {
         refreshProjects();
-        projects[0].click();
+        document.querySelector('#projects-list')
+                .firstChild.click();
     }
 
     return [SidebarDom, debug];

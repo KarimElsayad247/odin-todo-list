@@ -1,6 +1,7 @@
 :root {
     --green: #07d13d;
     --red: #dc4d3d;
+    --transparent-red: #dc4d3d68;
     --light-gray: #fafafa;
     --dark-gray: #eeeeee;
     --text-color: #202020;
@@ -94,7 +95,11 @@ header {
     transition: all 0.1s ease;
 }
 
-.project:hover, .project.active {
+.project:hover {
+    background-color: var(--transparent-red);
+}
+
+.project.active {
     background-color: var(--red);
     color: white;
 }
