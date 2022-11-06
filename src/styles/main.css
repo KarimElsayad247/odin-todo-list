@@ -49,7 +49,7 @@ header {
     align-items: center;
 }
 
-#add-project-button {
+.add-item-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,19 +58,20 @@ header {
     height: 1.5rem;
     min-width: 1.5rem;
     border-radius: 50%;
-    border: 2px solid var(--green);
+    border: 0px solid var(--green);
+    border: none;
     padding: 0.5rem;
 
-    background-color: #fafafa;
+    background-color: inherit;
     color: var(--green);
     font-size: 1.5rem;
     font-weight: 300;
     
-    
+    transition: all 0.1s ease-in;
     cursor: pointer;
 }
 
-#add-project-button:hover {
+.add-item-button:hover {
     background-color: var(--green);
     color: white;
 }
@@ -94,4 +95,18 @@ header {
 .project:hover, .project.active {
     background-color: var(--red);
     color: white;
+}
+
+.main-area {
+    padding: 1rem;
+}
+
+.main-area-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-item {
+    list-style-type: none;
 }

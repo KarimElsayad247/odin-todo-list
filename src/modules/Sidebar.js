@@ -1,37 +1,41 @@
 import Project from './Project.js'
 
-let projects = []
-
-function addNewProject() {
-    const project = Project();
-    projects.push(project);
-    refreshProjects();
-}
-
-function refreshProjects() {
-    const projectsList = document.querySelector('#projects-list');
-    projectsList.replaceChildren(...projects)
-}
-
-const CreateProjectButton = () => {
-    const button = document.createElement('button');
-    button.textContent = "+"
-    button.id = "add-project-button";
-    button.addEventListener('click', addNewProject);
-    return button;
-}
-
 export default function() {
+    let projects = []
+    
+    function addNewProject() {
+        const project = Project();
+        projects.push(project);
+        refreshProjects();
+    }
+    
+    function refreshProjects() {
+        const projectsList = document.querySelector('#projects-list');
+        projectsList.replaceChildren(...projects)
+    }
+    
+    const CreateProjectButton = () => {
+        const button = document.createElement('button');
+        button.textContent = "+"
+        button.classList.add("add-item-button");
+        button.addEventListener('click', addNewProject);
+        return button;
+    }
+
+    const SidebarHeaderTitle = () => {
+        const sidebarHeaderTitle = document.createElement('h2');
+        sidebarHeaderTitle.textContent = "Projects";
+        sidebarHeaderTitle.classList.add("sidebar-header-title");
+        return sidebarHeaderTitle;
+    }
+
     let sidebar = document.createElement('section');
     sidebar.classList.add('sidebar');
  
     const sidebarHeader = document.createElement('div');
     sidebarHeader.id = 'sidebar-header'
 
-    const sidebarHeaderTitle = document.createElement('h2');
-    sidebarHeaderTitle.textContent = "Projects";
-    sidebarHeaderTitle.classList.add("sidebar-header-title")
- 
+    const sidebarHeaderTitle = SidebarHeaderTitle();
     const createProjectButton = CreateProjectButton();
 
     sidebarHeader.appendChild(sidebarHeaderTitle);
